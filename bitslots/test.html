@@ -1,0 +1,33 @@
+<html>
+
+<head>
+    <title>Slot machine test</title>
+    <script type="text/javascript" src="libs/js/jquery-3.2.1.js"></script>
+    <script type="text/javascript" src="/Users/parmstrong/Documents/workspace/jQuery-SlotMachine/dist/jquery.slotmachine.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/Users/parmstrong/Documents/workspace/jQuery-SlotMachine/dist/jquery.slotmachine.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/Users/parmstrong/Documents/workspace/jQuery-SlotMachine/css/style.css"/>
+</head>
+
+<body>
+    <div id="casino1" class="slotMachine" style="margin-left: -65px;">
+        <div class="slot slot1"></div>
+        <div class="slot slot2"></div>
+        <div class="slot slot3"></div>
+        <div class="slot slot4"></div>
+        <div class="slot slot5"></div>
+        <div class="slot slot6"></div>
+    </div>
+</body>
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        window.machine4 = $("#casino1").slotMachine({
+            active	: 0,
+            delay	: 500
+        });
+    });
+</script>
+
+</html>
