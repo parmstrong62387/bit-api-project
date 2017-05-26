@@ -48,3 +48,7 @@ Temporary Items
 
 #IntelliJ
 .idea/
+
+#NPM
+**/node_modules
+**/.bundle
