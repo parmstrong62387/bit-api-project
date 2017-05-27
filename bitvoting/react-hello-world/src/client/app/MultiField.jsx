@@ -8,7 +8,6 @@ class MultiField extends React.Component {
         super(props);
         var initialValue = this.getInitialValue(props);
         this.handleChange = this.handleChange.bind(this);
-        this.moveItemUp = this.moveItemUp.bind(this);
         this.state = { value: initialValue, initialValue: initialValue };
     }
 
@@ -22,14 +21,13 @@ class MultiField extends React.Component {
                                 type="text"
                                 className="form-control"
                                 id={this.props.name}
+                                data-index={index}
                                 placeholder={this.props.placeholder}
                                 value={item.name}
-                                onChange={(e) => this.handleChange(e, index)}/>
-                            <div className="btn-group">
-                                <button onClick={() => this.moveItemUp(index)} type="button" className="btn btn-secondary">⬆</button>
-                                <button onClick={() => this.moveItemDown(index)} type="button" className="btn btn-secondary">⬇</button>
-                                <button onClick={() => this.removeItem(index)} type="button" className="btn btn-secondary">✖</button>
-                            </div>
+                                onChange={this.handleChange}/>
+                            <button onClick={() => this.moveItemUp(index)} type="button" className={index === 0 ? this.props.btnDisabled : this.props.btnCls}>⬆</button>
+                            <button onClick={() => this.moveItemDown(index)} type="button" className={index === (this.state.value.length - 1) ? this.props.btnDisabled : this.props.btnCls}>⬇</button>
+                            <button onClick={() => this.removeItem(index)} type="button" className={this.props.btnCls}>✖</button>
                         </div>
                     ))}
             </div>
@@ -47,7 +45,11 @@ class MultiField extends React.Component {
         }
     }
 
-    handleChange(e, index) {
+    handleChange(e) {
+        var index = e.target.getAttribute('data-index');
+        var newValue = _.clone(this.state.value);
+        newValue[index] = { name: e.target.value };
+        this.setState({ value: newValue });
     }
 
     moveItemUp(index) {
@@ -86,6 +88,11 @@ class MultiField extends React.Component {
     resetValue() {
         this.setState({ value: this.state.initialValue });
     }
+}
+
+MultiField.defaultProps = {
+    btnCls : 'btn btn-primary btn-small',
+    btnDisabled: 'btn btn-primary btn-small disabled'
 }
 
 export default MultiField;

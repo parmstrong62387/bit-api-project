@@ -49,4 +49,8 @@ class FormElement extends React.Component {
     }
 }
 
+FormElement.defaultProps = {
+    type: 'textfield'
+}
+
 export default FormElement;
