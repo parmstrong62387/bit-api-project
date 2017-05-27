@@ -1,5 +1,6 @@
 import React from 'react';
 import FormElement from "./FormElement.jsx"
+import MultiField from "./MultiField.jsx";
 
 class ControlPanelForm extends React.Component {
 
@@ -26,6 +27,11 @@ class ControlPanelForm extends React.Component {
                     label="Test Element 2"
                     defaultValue="Test default value"
                     key="1"/>
+                <MultiField
+                    ref={(el) => { this.elementRefs.push(el) }}
+                    name="test3"
+                    label="Test Element 3"
+                    key="2"/>
                 <button onClick={this.submitForm} type="submit" className="btn btn-primary">Save Changes</button>
                 <button onClick={this.resetForm} type="submit" className="btn btn-cancel">Reset Changes</button>
             </div>
