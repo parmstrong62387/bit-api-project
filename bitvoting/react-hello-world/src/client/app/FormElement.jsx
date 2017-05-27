@@ -4,8 +4,9 @@ class FormElement extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { value: this.getInitialValue(props) };
+        var initialValue = this.getInitialValue(props);
         this.handleChange = this.handleChange.bind(this);
+        this.state = { value: initialValue, initialValue: initialValue };
     }
 
     render() {
@@ -23,11 +24,6 @@ class FormElement extends React.Component {
         );
     }
 
-    handleChange(e) {
-        this.setState({ value: e.target.value });
-        localStorage[this.props.name] = e.target.value;
-    }
-
     getInitialValue(props) {
         var name = props.name;
         var storedValue = localStorage[name];
@@ -37,6 +33,19 @@ class FormElement extends React.Component {
         } else {
             return storedValue;
         }
+    }
+
+    handleChange(e) {
+        this.setState({ value: e.target.value })
+    }
+
+    persistValue() {
+        this.setState({ initialValue: this.state.value });
+        localStorage[this.props.name] = this.state.value;
+    }
+
+    resetValue() {
+        this.setState({ value: this.state.initialValue });
     }
 }
 
