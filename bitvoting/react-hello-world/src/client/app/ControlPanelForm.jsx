@@ -31,6 +31,7 @@ class ControlPanelForm extends React.Component {
                     ref={(el) => { this.elementRefs.push(el) }}
                     name="test3"
                     label="Test Element 3"
+                    max="4"
                     key="2"/>
                 <button onClick={this.submitForm} type="submit" className="btn btn-primary">Save Changes</button>
                 <button onClick={this.resetForm} type="submit" className="btn btn-cancel">Reset Changes</button>
