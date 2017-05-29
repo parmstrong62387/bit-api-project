@@ -3,12 +3,16 @@ var path = require('path');
 
 var BUILD_DIR = path.resolve(__dirname, 'src/client/public');
 var APP_DIR = path.resolve(__dirname, 'src/client/app');
+var PS_DIR = path.resolve(__dirname, 'src/client/app/pubsub');
 
 var config = {
-  entry: APP_DIR + '/control-panel.jsx',
+  entry: {
+      'app': APP_DIR + '/control-panel.jsx',
+      'pubsub': PS_DIR + '/main.js'
+  },
   output: {
     path: BUILD_DIR,
-    filename: 'bundle.js'
+    filename: '[name].js'
   },
   module: {
     loaders: [
