@@ -10,6 +10,7 @@ class ControlPanelForm extends React.Component {
         ];
         this.submitForm = this.submitForm.bind(this);
         this.resetForm = this.resetForm.bind(this);
+        this.launchApp = this.launchApp.bind(this);
     }
 
     render() {
@@ -35,6 +36,7 @@ class ControlPanelForm extends React.Component {
                     key="2"/>
                 <button onClick={this.submitForm} type="submit" className="btn btn-primary">Save Changes</button>
                 <button onClick={this.resetForm} type="submit" className="btn btn-cancel">Reset Changes</button>
+                <button onClick={this.launchApp} type="submit" className="btn btn-primary pull-right">Launch App</button>
             </div>
         );
     }
@@ -51,6 +53,15 @@ class ControlPanelForm extends React.Component {
         }
     }
 
+    launchApp() {
+        window.open(this.props.appUrl, this.props.appUrl, this.props.appWindowProps).focus();
+    }
+
+}
+
+ControlPanelForm.defaultProps = {
+    appUrl: 'control-panel.html',
+    appWindowProps: 'menubar=0,resizable=1,width=1000,height=600'
 }
 
 export default ControlPanelForm;

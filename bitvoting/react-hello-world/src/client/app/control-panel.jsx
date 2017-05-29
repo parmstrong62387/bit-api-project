@@ -5,8 +5,20 @@ import ControlPanelForm from './ControlPanelForm.jsx';
 class App extends React.Component {
     render () {
         return <div>
-            <p> Hello React!</p>
-            <ControlPanelForm />
+            <nav className="navbar navbar-default">
+                <div className="container-fluid">
+                    <div className="navbar-header">
+                        <a href="#">
+                            <img src="public/img/bit-voting.png" height="50"/>
+                            <img src="public/img/bit-10000.gif" height="50"/>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+
+            <div className="container">
+                <ControlPanelForm />
+            </div>
         </div>;
     }
 }
